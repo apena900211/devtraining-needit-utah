@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_58872_needit.NeedItWhatNeededService</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description>Return the what needed options by request type</description>
+        <name>NeedItWhatNeededService</name>
+        <script><![CDATA[var NeedItWhatNeededService = Class.create();
+NeedItWhatNeededService.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getWhatNeededByRequestType: function(){
+		var requestType = this.getParameter('sysparm_requestType');
+		var result = [];
+		if(requestType == 'hr') {
+			result.push({value:'hr1', text: 'Human Resources 1'});
+			result.push({value:'hr2', text: 'Human Resources 2'});
+			result.push({value:'other', text: 'Other'});
+		}
+		else if (requestType == 'facilities'){
+			result.push({value:'facilities1', text: 'Facilities 1'});
+			result.push({value:'facilities2', text: 'Facilities 2'});
+			result.push({value:'other', text: 'Other'});
+		}
+		else if(requestType == 'legal'){
+			result.push({value:'legal1', text: 'Legal 1'});
+			result.push({value:'legal2', text: 'Legal 2'});
+			result.push({value:'other', text: 'Other'});
+		}
+		return result.length > 0 ? JSON.stringify({success: true, data: result }) : JSON.stringify({success: false, data: result, errorMessage: 'Error loading what needed from request type.'});
+	},
+    type: 'NeedItWhatNeededService'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-06-21 17:17:58</sys_created_on>
+        <sys_id>78f83cfb97b6421090a9b47de053af64</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>NeedItWhatNeededService</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_78f83cfb97b6421090a9b47de053af64</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-06-21 18:04:48</sys_updated_on>
+    </sys_script_include>
+</record_update>
